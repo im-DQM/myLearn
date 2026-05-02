@@ -1,0 +1,50 @@
+﻿  MemoryPool.cpp
+E:\编程\星球\memery pool\MemeryPool1\MemoryPool.h(48,55): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“MemoryPool.cpp”)
+  
+E:\编程\星球\memery pool\MemeryPool1\MemoryPool.h(59,48): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“MemoryPool.cpp”)
+  
+E:\编程\星球\memery pool\MemeryPool1\MemoryPool.cpp(5,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+E:\编程\星球\memery pool\MemeryPool1\MemoryPool.cpp(21,15): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+  test.cpp
+E:\编程\星球\memery pool\MemeryPool1\MemoryPool.h(48,55): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“test.cpp”)
+  
+E:\编程\星球\memery pool\MemeryPool1\MemoryPool.h(59,48): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“test.cpp”)
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 1 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9):
+      请考虑在格式字符串中使用“%zu”
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 2 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9):
+      请考虑在格式字符串中使用“%zu”
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 3 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9):
+      请考虑在格式字符串中使用“%zu”
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 4 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(62,9):
+      请考虑在格式字符串中使用“%zu”
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 1 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9):
+      请考虑在格式字符串中使用“%zu”
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 2 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9):
+      请考虑在格式字符串中使用“%zu”
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 3 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9):
+      请考虑在格式字符串中使用“%zu”
+  
+E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 4 拥有了类型“size_t”
+      E:\编程\星球\memery pool\MemeryPool1\test.cpp(96,9):
+      请考虑在格式字符串中使用“%zu”
+  
+  正在生成代码...
+  MemeryPool1.vcxproj -> E:\编程\星球\memery pool\MemeryPool1\x64\Debug\MemoryPool1.exe
