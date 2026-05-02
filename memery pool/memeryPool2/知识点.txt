@@ -1,0 +1,107 @@
+thread_local:
+	线程存储期说明符，每个线程有自己的变量副本，线程之间数据隔离，无需加锁
+	线程启动时创建，结束时销毁，生命周期和线程绑定
+
+指针本身储存的东西就是对象的地址
+	*p = &instance;
+	所以返回值为指针（不希望拷贝复制的情况下，如单例模式）的函数，要返回一个地址。
+
+A() = default;相比于A(); 
+	default是平凡构造，完全不改变内存内部的东西给，直接吧内存中原有的垃圾值赋给A，节省算力和内存
+
+malloc只分配原始内存，不调用构造函数，返回void*，必须强转（租空地）
+	int* p1 = (int*)malloc(sizeof(int));
+	free(p1);
+
+new分配内存并自动调用构造函数，返回指针（租空地+盖房子）
+	int* p2 = new int;
+	delete p2;
+
+freeList_[index] = *reinterpret_cast<void**>(ptr);裸指针复用内存链表
+	把ptr转换成指向void指针的指针，本来ptr指向的是freeList_[index]指向的内存
+	所以这段代码就把ptr指向的内存强行当作一个指针来用
+	而指针在内存中占8个字节，所以ptr指向的内存的前8个字节充当一个指针来使用，指向freeList_[index]的下一个内存块对应的地址
+	所以对reinterpret_cast<void**>(ptr)解引用代表指向下一块内存的指针，就相当于链表里的next
+	if(void* ptr = freeList_[index]);
+	freeList_[index] = *reinterpret_cast<void**>(ptr);
+	两行代码实现头插法，让freeList_[index]指向下一块内存
+
+freeList_[index]数组本质上是一个栈
+
+命名时，再尾部加_，例如freeList_，代表这是类的成员变量
+
+mutex是一个锁，每次锁上的的时候，其他部分无法访问这块代码块，只有共用一把锁的是偶才会互斥
+	所以成员变量mutex甚至可以被定义成全局变量
+
+&写在变量的前面就是取地址，在类型后面就是引用
+
+atomic原子类型模板：让单个变量的操作 “要么全做完、要么全不做”，不会被其他线程插一脚。
+	相当于给单个变量上锁，但是是开销很小，是硬件cpu指令级原子保证，例如计数器、标志位、状态位的实现
+
+	互斥锁：抢不到锁就休眠，让出cpu
+	自旋锁：抢不到锁就空转，原地循环检测
+
+atomic_flag是原子布尔类型，只有test-and-set和clear操作，是实现自旋锁的关键
+	clear():标志位设成0
+	test-and-set():先读取当前值，再设为1，然后返回旧值，用来抢锁
+	void lock() {
+        // 自旋：一直抢，直到成功
+        while (flag.test_and_set(std::memory_order_acquire)) {
+            // 空循环 —— 自旋
+        }
+    }
+
+	constexpr编译期就定死的常量
+
+void* ptr = mmap(nullptr, size, PROT_READ | PROT_WRITE,MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	申请一段匿名的、可读写的私有内存（类似 malloc，但用操作系统底层接口实现）。
+	逐部分拆解：
+		void* ptr
+		定义一个通用指针变量，名字叫 ptr。
+		void* 表示它可以指向任意类型的内存。
+		mmap(...)
+		memory map（内存映射）的系统调用。
+		是 Linux/macOS 等类 Unix 系统的底层内存分配函数。
+		：把一段内存 / 文件映射到进程的地址空间。
+		第一个参数：nullptr
+		让内核自动选择合适的地址来分配内存。
+		不指定固定地址 → 最安全、最常用。
+		第二个参数：size
+		要申请的内存大小（单位：字节）。
+		比如 size=4096 就是申请 4KB 内存。
+		第三个参数：PROT_READ | PROT_WRITE
+		内存权限设置。
+		PROT_READ：允许读
+		PROT_WRITE：允许写
+		用 | 组合 → 这段内存可读写。
+		第四个参数：MAP_PRIVATE | MAP_ANONYMOUS
+		映射标志：
+		MAP_PRIVATE：私有映射，其他进程看不到这段内存。
+		MAP_ANONYMOUS：匿名映射，不关联任何文件，纯粹用来分配内存。
+		组合起来 = 创建一段私有的、无文件关联的内存（就是 “堆内存”）。
+		第五个参数：-1
+		文件描述符。
+		因为是匿名映射（不使用文件），所以必须传 -1。
+		第六个参数：0
+		文件偏移量。
+		匿名映射不需要偏移，所以填 0。
+
+		指针加步长，地址按照指针的大小移动，void*不能做加法，char*的大小为1字节
+		所以void*想做地址变换，要先转换成static_cast<char*>，void指针转换用static_cast<char*>规范且安全
+
+return (bytes + ALIGNMENT - 1) & ~(ALIGNMENT - 1);
+		将任意字节数向上对齐到指定的 ALIGNMENT 整数倍。
+
+static CentralCache& getInstance() {
+			static CentralCache instance;
+			return instance;
+		}
+		获取单例模式，在对象前面加static关键字，只有在第一次调用的时候会创建单例、
+		注意有两个static哦
+
+static和全局变量唯一区别就是作用域不一样，但是都存储在静态存储区
+类中只有加了static的方法才可以通过类，名直接调用
+而const是保证数据不会被更改，和生命周期无关
+
+ptr.store(nullptr, std::memory_order_relaxed);原子变量的读和写都要加内存序来限制
+	写是store，读是load
