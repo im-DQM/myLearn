@@ -1,7 +1,7 @@
 #include "CentralCache.h"
 #include "PageCache.h"
 
-namespace Kama_memoryPool {
+namespace MengDa_memoryPool {
 
 	const std::chrono::milliseconds CentralCache::DELAY_INTERVAL{ 1000 };//设置延迟间隔为1000ms
 	static const size_t SPAN_PAGES = 8;//span的最小页数

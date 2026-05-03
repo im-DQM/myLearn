@@ -2,7 +2,7 @@
 #include<map>
 #include<mutex>
 
-namespace Kama_memoryPool {
+namespace MengDa_memoryPool {
 	class PageCache {
 	public:
 		static const size_t PAGE_SIZE = 4096;//操作系统默认一页是4kb（4096字节）

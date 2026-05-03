@@ -2,8 +2,9 @@
 #include <cstddef>
 #include <atomic>
 #include <array>
+#include <algorithm>
 
-namespace Kama_memoryPool
+namespace MengDa_memoryPool
 {
 	// 对齐数和大小定义
 	constexpr size_t ALIGNMENT = 8;
@@ -19,6 +20,7 @@ namespace Kama_memoryPool
 	};
 
 	class SizeClass {
+	public:
 		static size_t roundUp(size_t bytes) {
 			return (bytes + ALIGNMENT - 1) & ~(ALIGNMENT - 1);
 		}

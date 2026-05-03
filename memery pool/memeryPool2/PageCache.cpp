@@ -1,7 +1,7 @@
 #include "PageCache.h"
 #include<windows.h>
 
-namespace Kama_memoryPool {
+namespace MengDa_memoryPool {
 	void PageCache::deallocateSpan(void* ptr, size_t numPages) {//？？我觉得没必要传这个numPages
 		//上锁
 		std::lock_guard<std::mutex> lock(mutex_);

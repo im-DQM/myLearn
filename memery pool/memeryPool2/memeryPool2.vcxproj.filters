@@ -13,16 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\test">
+      <UniqueIdentifier>{0c777a6c-d2bc-4863-8abd-9896aca9996c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\cpp">
+      <UniqueIdentifier>{985bcac4-b939-4207-901c-76c37787552b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="知识点.txt">
-      <Filter>源文件</Filter>
+    <ClCompile Include="UnitTest.cpp">
+      <Filter>源文件\test</Filter>
     </ClCompile>
-    <ClCompile Include="PageCache.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="PerformenceTest.cpp">
+      <Filter>源文件\test</Filter>
     </ClCompile>
     <ClCompile Include="CentralCache.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="PageCache.cpp">
+      <Filter>源文件\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadCache.cpp">
+      <Filter>源文件\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -38,5 +50,13 @@
     <ClInclude Include="Common.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MemoryPool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt">
+      <Filter>源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>

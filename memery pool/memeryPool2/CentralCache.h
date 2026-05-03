@@ -6,7 +6,7 @@
 #include <atomic>
 #include <chrono>
 
-namespace Kama_memoryPool {
+namespace MengDa_memoryPool {
 	struct SpanTracker {
 		std::atomic<void*> spanAddr{ nullptr };//spanÍ·µØÖ·
 		std::atomic<size_t> numPages{ 0 };//Ò³Êý

@@ -2,11 +2,11 @@
 #include<array>
 #include"Common.h"
 
-namespace Kama_memoryPool {
+namespace MengDa_memoryPool {
 	class ThreadCache {//线程单例
 	public:
 		//提供对外获取线程对象接口
-		static ThreadCache* getInstanc() {
+		static ThreadCache* getInstance() {
 			static thread_local ThreadCache instance;
 			return &instance;
 		}
@@ -25,7 +25,7 @@ namespace Kama_memoryPool {
 		//判断是否需要吧内存还给中心缓存
 		bool shouldReturnToCentralCache(size_t index);
 		//把内存还给中心缓存
-		void ReturnToCentralCache(void* start, size_t index);
+		void ReturnToCentralCache(void* start, size_t size);
 
 	private://写两个private把私有数据和私有方法分开
 		std::array<void*, FREE_LIST_SIZE> freeList_;//储存自由链表的数组
