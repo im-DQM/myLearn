@@ -1,0 +1,75 @@
+#pragma once
+#include<string>
+#include <easyx.h>
+#include "frame.h"
+//---------------------------------------------------------service---------------------------------------------------------
+
+std::wstring utf8_to_wstring(const std::string& str);
+std::string wstring_to_utf8(const std::wstring& str);
+
+//��ѭ��������gameWin��
+void runPages();
+/*
+	�����ˣ�
+	���ܣ�
+		������ѭ����ʱ�̼��Page����ֵ���Ҽ�������¼���������msg
+		����Page�͸���view����
+		��֤Page�仯ʱ������ת����ȷ�Ľ���
+*/
+
+
+//�ж��ռ��Ƿ����
+bool haveThisDairy();
+/*
+	�����ˣ�
+	���ܣ�
+		���ݵ�ǰcurDairy������
+		�ж��ռǱ�list������û��������ڵ��ռ�
+		����У��Ѹ��ռǵĵ�ַ�ŵ�curDairy��path�в�����true
+		���û�з���false
+*/
+
+
+//�����ռ�
+void saveDairy(std::wstring str);
+/*
+	�����ˣ�
+	���ܣ�
+		�����ļ����Ұ�str�е����ݱ��浽�ļ���
+		���ұ�֤ÿ�δ������ļ���ַ����ͬ�����Ը���curDairy������������
+		�Ѹ��ļ��ĵ�ַ���浽�ռǱ�list��
+*/
+
+
+//�ı����ԣ����һ�����԰�ť�ᷢ�������飩
+void applyPropertyDelta(std::wstring& str, WhitchProperty wp, int delta);
+
+void changeProperty(std::wstring& str, WhitchProperty wp, bool b);
+/*
+	�����ˣ�
+	���ܣ�
+		�����ַ���str,WhitchProperty����wp,bool����b
+		bΪtrue����������false�����½�
+		����wp�ж���Ҫ�����ĸ����ԣ�����b�ж���Ҫ���ӻ��Ǽ���
+		��myProperty���޸Ķ�Ӧ����
+		��str�ַ���ĩβ�����ַ�����xxx+n�������磺����+2�����һ���
+		���������ı䲻ͬ����ʱ�����ӻ���ٵ�n
+*/
+
+
+//�ж��ռ������ǲ��Ǻ�����
+bool isVailedData(int year, int month, int day);
+
+void loadDairyList();
+void savePropertyToFile();
+void loadPropertyFromFile();
+void loadCustomEvents();
+void saveCustomEvents();
+std::wstring loadDairyContent();
+/*
+	�����ˣ�
+	���ܣ�
+		�ж�����������Ƿ��������Ҫ�������꣩
+		��������true������������false
+*/
+//---------------------------------------------------------service---------------------------------------------------------
