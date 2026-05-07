@@ -4,9 +4,9 @@
 *.userosscache
 *.sln.docstates
 
-x64/
-Debug/
-Release/
+#x64/
+#Debug/
+#Release/
 
 *.obj
 *.pdb
@@ -21,7 +21,7 @@ Release/
 *.Build.CppClean.log
 *.vcxproj.FileListAbsolute.txt
 
-*.exe
+#*.exe
 *.dll
 *.lib
 *.exp
